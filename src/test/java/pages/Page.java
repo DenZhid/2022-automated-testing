@@ -1,9 +1,8 @@
 package pages;
 
-abstract class Page {
+interface Page {
 
-    public boolean isPresent() {
-        return false;
-    }
+    /** Поиск ответа по локатору. */
+    boolean isPresent();
 
 }
