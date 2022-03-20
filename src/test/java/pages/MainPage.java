@@ -1,27 +1,29 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+
+import utils.GroupPageException;
 import utils.NotLoggedException;
 
-public class MainPage implements Page {
-    private final WebDriver driver;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Selenide.$;
 
-    public MainPage(WebDriver driver) throws NotLoggedException {
+public class MainPage implements Page {
+
+    public MainPage() throws NotLoggedException {
         //В конструкторе проверяется залогинились ли мы
         if (!isPresent()) {
-            throw new NotLoggedException();
+            throw new NotLoggedException("Invalid logging operation");
         }
-        this.driver = driver;
     }
 
     @Override
     public boolean isPresent() {
-        //TODO
-        return true;
+        return $(By.xpath("//*[@data-l = 't,userPage']")).should(exist).exists();
     }
 
-    public GroupPage goToGroups() {
-        //TODO
-        return new GroupPage(driver);
+    public GroupPage goToGroups() throws GroupPageException {
+        $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
+        return new GroupPage();
     }
 }
