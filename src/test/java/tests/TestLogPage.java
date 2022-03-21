@@ -1,9 +1,10 @@
 package tests;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import pages.LogPage;
 import utils.User;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,7 +17,6 @@ public class TestLogPage extends ParentTest {
         user = new User(USER_LOGIN, USER_PASSWORD);
     }
 
-    // Тест: Логинимся на одноклассниках -> заходим в группу -> проверяем, что есть группа Технополиса
     @Test
     public void hasVKInPolyGroup() throws Exception {
         assertTrue(new LogPage()

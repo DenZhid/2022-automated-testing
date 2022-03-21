@@ -1,7 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-
 import utils.LogPageException;
 import utils.NotLoggedException;
 import utils.User;

@@ -1,10 +1,9 @@
 package pages;
 
-import org.openqa.selenium.By;
-
 import utils.GroupPageException;
 
-import static com.codeborne.selenide.Condition.exist;
+import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
