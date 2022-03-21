@@ -19,7 +19,7 @@ public class LogPage implements Page {
 
     @Override
     public boolean isPresent() {
-        return $(byName("st.password")).should(Condition.exist).exists();
+        return $(byName("st.password")).exists();
     }
 
     public MainPage login(User user) throws NotLoggedException {

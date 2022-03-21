@@ -19,7 +19,7 @@ public class MainPage implements Page {
 
     @Override
     public boolean isPresent() {
-        return $(By.xpath("//*[@data-l = 't,userPage']")).should(exist).exists();
+        return $(By.xpath("//*[@data-l = 't,userPage']")).exists();
     }
 
     public GroupPage goToGroups() throws GroupPageException {

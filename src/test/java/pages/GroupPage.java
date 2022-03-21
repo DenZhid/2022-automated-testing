@@ -6,6 +6,7 @@ import utils.GroupPageException;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class GroupPage implements Page {
 
@@ -17,7 +18,8 @@ public class GroupPage implements Page {
 
     @Override
     public boolean isPresent() {
-        return $(By.id("hook_Block_UserGroupsPanelBlock")).should(exist).exists();
+        sleep(500);
+        return $(By.id("hook_Block_UserGroupsPanelBlock")).exists();
     }
 
     public boolean hasGroup(String groupId) {
