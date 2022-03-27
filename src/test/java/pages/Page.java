@@ -10,12 +10,12 @@ abstract class Page {
 
     public final SelenideElement loadableElement;
 
-    public Page(SelenideElement loadableElement) throws PageLoadException {
+    public Page(SelenideElement loadableElement) {
         this.loadableElement = loadableElement;
         checkIfPresent();
     }
 
-    public Page(String url, SelenideElement loadableElement) throws PageLoadException {
+    public Page(String url, SelenideElement loadableElement) {
         open(url);
         this.loadableElement = loadableElement;
         checkIfPresent();

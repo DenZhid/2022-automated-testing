@@ -20,9 +20,12 @@ public class MainPage extends Page {
         }
     }
 
-    public UserGroupsPage goToGroups() {
+    public UserGroupsPage goToGroupsPage() {
         $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
         return new UserGroupsPage();
     }
 
+    public GroupPage goToGroup(String groupId) {
+        return new GroupPage("https://ok.ru/group/" + groupId);
+    }
 }
