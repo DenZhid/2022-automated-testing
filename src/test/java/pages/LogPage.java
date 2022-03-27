@@ -1,10 +1,9 @@
 package pages;
 
-import org.openqa.selenium.By;
-
 import com.codeborne.selenide.SelenideElement;
 
 import utils.LogPageException;
+import utils.PageLoadException;
 import utils.User;
 
 import static com.codeborne.selenide.Selectors.byName;
@@ -12,9 +11,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LogPage extends Page {
 
-    public final SelenideElement loadableElement = $(byName("st.password"));
     public final SelenideElement loginField = $(byName("st.email"));
     public final SelenideElement passwordField = $(byName("st.password"));
+
+    public LogPage() throws PageLoadException {
+        super($(byName("st.password")));
+    }
 
     @Override
     void checkIfPresent() {

@@ -2,15 +2,16 @@ package pages;
 
 import org.openqa.selenium.By;
 
-import com.codeborne.selenide.SelenideElement;
-
 import utils.NotLoggedException;
+import utils.PageLoadException;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends Page {
 
-    public final SelenideElement loadableElement = $(By.xpath("//*[@data-l = 't,userPage']"));
+    public MainPage() throws PageLoadException {
+        super($(By.xpath("//*[@data-l = 't,userPage']")));
+    }
 
     @Override
     void checkIfPresent() {

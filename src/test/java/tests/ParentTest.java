@@ -1,7 +1,7 @@
 package tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -11,13 +11,13 @@ public class ParentTest {
     final static String USER_LOGIN = "";
     final static String USER_PASSWORD = "";
 
-    @BeforeAll
-    public static void createWebDriver() {
+    @BeforeEach
+    public void createWebDriver() {
         open("https://ok.ru");
     }
 
-    @AfterAll
-    public static void close() {
+    @AfterEach
+    public void close() {
         closeWebDriver();
     }
 }
