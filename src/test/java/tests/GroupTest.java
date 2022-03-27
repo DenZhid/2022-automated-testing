@@ -7,7 +7,7 @@ import utils.User;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestLogPage extends ParentTest {
+public class GroupTest extends ParentTest {
     private static User user;
     private final static String GROUP_ID = "53245288710321"; // ID группы vk ude
 
@@ -18,7 +18,7 @@ public class TestLogPage extends ParentTest {
 
     // Тест: Логинимся на одноклассниках -> заходим в группу -> проверяем, что есть группа Технополиса
     @Test
-    public void hasVKInPolyGroup() throws Exception {
+    public void hasVKInPolyGroup() {
         assertTrue(new LogPage()
                 .login(user)
                 .goToGroups()
