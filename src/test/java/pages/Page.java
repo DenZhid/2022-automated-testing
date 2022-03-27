@@ -1,8 +1,14 @@
 package pages;
 
-interface Page {
+import utils.PageLoadException;
 
-    /** Поиск ответа по локатору. */
-    boolean isPresent();
+abstract class Page {
+
+    public Page() throws PageLoadException {
+        checkIfPresent();
+    }
+
+    /** Проверка нахождения на нужной странице. */
+    abstract void checkIfPresent() throws PageLoadException;
 
 }

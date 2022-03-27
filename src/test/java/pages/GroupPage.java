@@ -4,22 +4,17 @@ import org.openqa.selenium.By;
 
 import utils.GroupPageException;
 
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class GroupPage implements Page {
-
-    public GroupPage() throws GroupPageException {
-        if (!isPresent()) {
-            throw new GroupPageException("Invalid group page initialization");
-        }
-    }
+public class GroupPage extends Page {
 
     @Override
-    public boolean isPresent() {
+    void checkIfPresent() {
         sleep(500);
-        return $(By.id("hook_Block_UserGroupsPanelBlock")).exists();
+        if (!$(By.id("hook_Block_UserGroupsPanelBlock")).exists()) {
+            throw new GroupPageException("Invalid group page initialization");
+        }
     }
 
     public boolean hasGroup(String groupId) {
