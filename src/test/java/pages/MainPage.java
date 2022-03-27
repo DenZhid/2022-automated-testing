@@ -28,4 +28,9 @@ public class MainPage extends Page {
     public GroupPage goToGroup(String groupId) {
         return new GroupPage("https://ok.ru/group/" + groupId);
     }
+
+    public MusicPage goToMusic() {
+        $(By.xpath("//*[@data-l = 't,music']")).click();
+        return new MusicPage();
+    }
 }
