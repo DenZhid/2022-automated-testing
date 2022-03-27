@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class ParentTest {
 
-    final static String USER_PASSWORD = "";
     final static String USER_LOGIN = "";
+    final static String USER_PASSWORD = "";
 
     @BeforeAll
     public static void createWebDriver() {
