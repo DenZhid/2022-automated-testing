@@ -2,15 +2,19 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import com.codeborne.selenide.SelenideElement;
+
 import utils.NotLoggedException;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends Page {
 
+    public final SelenideElement loadableElement = $(By.xpath("//*[@data-l = 't,userPage']"));
+
     @Override
     void checkIfPresent() {
-        if (!$(By.xpath("//*[@data-l = 't,userPage']")).exists()) {
+        if (!loadableElement.exists()) {
             throw new NotLoggedException("Invalid logging operation");
         }
     }

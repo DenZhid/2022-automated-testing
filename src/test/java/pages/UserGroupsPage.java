@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import com.codeborne.selenide.SelenideElement;
+
 import utils.UserGroupsPageException;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -9,10 +11,12 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class UserGroupsPage extends Page {
 
+    public final SelenideElement loadableElement = $(By.id("hook_Block_UserGroupsPanelBlock"));
+
     @Override
     void checkIfPresent() {
         sleep(500);
-        if (!$(By.id("hook_Block_UserGroupsPanelBlock")).exists()) {
+        if (!loadableElement.exists()) {
             throw new UserGroupsPageException("Invalid group page initialization");
         }
     }
