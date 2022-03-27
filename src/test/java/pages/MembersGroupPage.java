@@ -28,6 +28,7 @@ public class MembersGroupPage extends Page {
             throw new InvalidArgumentException("User id is undefined");
         }
         $(By.id("search")).setValue(user.id.toString()).pressEnter();
+        sleep(500);
         return ($(By.xpath("//a[@href = '/profile/" + user.id + "']")).exists());
     }
 
