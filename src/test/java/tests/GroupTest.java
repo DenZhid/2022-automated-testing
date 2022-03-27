@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GroupTest extends ParentTest {
     private static User user;
     private final static String GROUP_ID = "53245288710321"; // ID группы vk ude
+    private final static String GROUP_NAME = "Образовательный центр VK в Политехе";
 
     @BeforeAll
     public static void createUser() {
@@ -24,5 +25,10 @@ public class GroupTest extends ParentTest {
                 .goToGroups()
                 .hasGroup(GROUP_ID)
         );
+    }
+
+    @Test
+    public void groupHasName() {
+
     }
 }

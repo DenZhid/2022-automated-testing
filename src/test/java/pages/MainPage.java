@@ -15,9 +15,9 @@ public class MainPage extends Page {
         }
     }
 
-    public GroupPage goToGroups() {
+    public UserGroupsPage goToGroups() {
         $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
-        return new GroupPage();
+        return new UserGroupsPage();
     }
 
 }
