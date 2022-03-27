@@ -15,7 +15,7 @@ public class MusicPage extends Page{
 
     @Override
     void checkIfPresent() {
-        sleep(500);
+        sleep(1000);
         if (!loadableElement.exists()) {
             throw new MusicPageException("Invalid music page initialization");
         }
