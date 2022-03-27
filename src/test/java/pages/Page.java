@@ -6,7 +6,7 @@ import utils.PageLoadException;
 
 import static com.codeborne.selenide.Selenide.open;
 
-abstract class Page {
+public abstract class Page {
 
     public final SelenideElement loadableElement;
 

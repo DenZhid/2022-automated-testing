@@ -8,6 +8,7 @@ import utils.GroupPageException;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class GroupPage extends Page {
 
@@ -31,6 +32,28 @@ public class GroupPage extends Page {
     public MembersGroupPage goToMembers() {
         toMembers.click();
         return new MembersGroupPage();
+    }
+
+    public GroupPage subscribe() {
+        SelenideElement subBtn = $(By.xpath("//*[@class='button-pro __wide']"));
+        if (subBtn.exists()) {
+            subBtn.click();
+        }
+        return this;
+    }
+
+    public GroupPage unsubscribe() {
+        SelenideElement unsubBtn = $(By.xpath("//*[@class='dropdown __wide h-mod']"));
+        if (unsubBtn.exists()) {
+            unsubBtn.click();
+            $(By.xpath("//*[@class='dropdown_cnt __wide __show']")).click();
+        }
+        return this;
+    }
+
+    public MainPage goToMain() {
+        open("https://ok.ru/");
+        return new MainPage();
     }
 
 }
