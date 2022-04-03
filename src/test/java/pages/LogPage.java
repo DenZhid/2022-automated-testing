@@ -1,33 +1,34 @@
 package pages;
 
-import com.codeborne.selenide.SelenideElement;
-
 import utils.LogPageException;
 import utils.PageLoadException;
 import utils.User;
 
-import static com.codeborne.selenide.Selectors.byName;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LogPage extends Page {
 
-    public final SelenideElement loginField = $(byName("st.email"));
-    public final SelenideElement passwordField = $(byName("st.password"));
+    public static final SelenideElement LOGIN_FIELD = $(byXpath("//input[@name='st.email']"));
+    public static final SelenideElement PASSWORD_FIELD = $(byXpath("//input[@name='st.password']"));
 
     public LogPage() throws PageLoadException {
-        super($(byName("st.password")));
+        super($(byXpath("//input[@name='st.password']")));
     }
 
     @Override
-    void checkIfPresent() {
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new LogPageException("Something went wrong...");
         }
     }
 
     public MainPage login(User user) {
-        loginField.setValue(user.getLogin());
-        passwordField.setValue(user.getPassword()).pressEnter();
+        LOGIN_FIELD.setValue(user.getLogin());
+        PASSWORD_FIELD.setValue(user.getPassword()).pressEnter();
         return new MainPage();
     }
 

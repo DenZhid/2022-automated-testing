@@ -1,27 +1,34 @@
 package pages;
 
-import org.openqa.selenium.By;
-
 import utils.NotLoggedException;
 import utils.PageLoadException;
 
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends Page {
 
+    private static final SelenideElement TO_GROUPS_BUTTON = $(byXpath("//*[@data-l = 't,userAltGroup']"));
+    private static final SelenideElement TO_MUSIC_BUTTON = $(byXpath("//*[@data-l = 't,music']"));
+    private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//*[@data-l = 't,userPhotos']"));
+    private static final SelenideElement TO_USER_PROFILE_BUTTON = $(byXpath("//*[@data-l = 't,userPage']"));
+
     public MainPage() throws PageLoadException {
-        super($(By.xpath("//*[@data-l = 't,userPage']")));
+        super(TO_USER_PROFILE_BUTTON);
     }
 
     @Override
-    void checkIfPresent() {
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new NotLoggedException("Invalid logging operation");
         }
     }
 
     public UserGroupsPage goToGroupsPage() {
-        $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
+        TO_GROUPS_BUTTON.click();
         return new UserGroupsPage();
     }
 
@@ -30,7 +37,12 @@ public class MainPage extends Page {
     }
 
     public MusicPage goToMusic() {
-        $(By.xpath("//*[@data-l = 't,music']")).click();
+        TO_MUSIC_BUTTON.click();
         return new MusicPage();
+    }
+
+    public PhotoPage goToPhoto() {
+        TO_PHOTOS_BUTTON.click();
+        return new PhotoPage();
     }
 }

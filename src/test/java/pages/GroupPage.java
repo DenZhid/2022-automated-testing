@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import utils.GroupPageException;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -19,8 +20,8 @@ public class GroupPage extends Page {
     }
 
     @Override
-    void checkIfPresent() {
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new GroupPageException("Invalid group page initialization");
         }
     }

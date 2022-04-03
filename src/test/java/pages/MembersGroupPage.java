@@ -6,6 +6,7 @@ import org.openqa.selenium.InvalidArgumentException;
 import utils.GroupPageException;
 import utils.User;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -16,9 +17,8 @@ public class MembersGroupPage extends Page {
     }
 
     @Override
-    void checkIfPresent() {
-        sleep(500);
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new GroupPageException("Members group page init fail");
         }
     }
