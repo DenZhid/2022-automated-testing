@@ -2,26 +2,35 @@ package pages;
 
 import org.openqa.selenium.By;
 
-import utils.GroupPageException;
 import utils.NotLoggedException;
+import utils.PageLoadException;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class MainPage implements Page {
+public class MainPage extends Page {
 
-    public MainPage() throws NotLoggedException {
-        if (!isPresent()) {
+    public MainPage() throws PageLoadException {
+        super($(By.xpath("//*[@data-l = 't,userPage']")));
+    }
+
+    @Override
+    void checkIfPresent() {
+        if (!loadableElement.exists()) {
             throw new NotLoggedException("Invalid logging operation");
         }
     }
 
-    @Override
-    public boolean isPresent() {
-        return $(By.xpath("//*[@data-l = 't,userPage']")).exists();
+    public UserGroupsPage goToGroupsPage() {
+        $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
+        return new UserGroupsPage();
     }
 
-    public GroupPage goToGroups() throws GroupPageException {
-        $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
-        return new GroupPage();
+    public GroupPage goToGroup(String groupId) {
+        return new GroupPage("https://ok.ru/group/" + groupId);
+    }
+
+    public MusicPage goToMusic() {
+        $(By.xpath("//*[@data-l = 't,music']")).click();
+        return new MusicPage();
     }
 }

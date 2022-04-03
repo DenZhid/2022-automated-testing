@@ -1,28 +1,33 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
+
 import utils.LogPageException;
-import utils.NotLoggedException;
+import utils.PageLoadException;
 import utils.User;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LogPage implements Page {
+public class LogPage extends Page {
 
-    public LogPage() throws LogPageException {
-        if (!isPresent()) {
+    public final SelenideElement loginField = $(byName("st.email"));
+    public final SelenideElement passwordField = $(byName("st.password"));
+
+    public LogPage() throws PageLoadException {
+        super($(byName("st.password")));
+    }
+
+    @Override
+    void checkIfPresent() {
+        if (!loadableElement.exists()) {
             throw new LogPageException("Something went wrong...");
         }
     }
 
-    @Override
-    public boolean isPresent() {
-        return $(byName("st.password")).exists();
-    }
-
-    public MainPage login(User user) throws NotLoggedException {
-        $(byName("st.email")).setValue(user.getLogin());
-        $(byName("st.password")).setValue(user.getPassword()).pressEnter();
+    public MainPage login(User user) {
+        loginField.setValue(user.getLogin());
+        passwordField.setValue(user.getPassword()).pressEnter();
         return new MainPage();
     }
 
