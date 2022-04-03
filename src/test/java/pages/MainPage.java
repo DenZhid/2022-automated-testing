@@ -1,16 +1,21 @@
 package pages;
 
-import org.openqa.selenium.By;
-
 import utils.NotLoggedException;
 import utils.PageLoadException;
 
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends Page {
 
+    private static final SelenideElement TO_GROUPS_BUTTON = $(byXpath("//*[@data-l = 't,userAltGroup']"));
+    private static final SelenideElement TO_MUSIC_BUTTON = $(byXpath("//*[@data-l = 't,music']"));
+    private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//a[@data-l = 't,userPhotos']"));
+
     public MainPage() throws PageLoadException {
-        super($(By.xpath("//*[@data-l = 't,userPage']")));
+        super($(byXpath("//*[@data-l = 't,userPage']")));
     }
 
     @Override
@@ -21,7 +26,7 @@ public class MainPage extends Page {
     }
 
     public UserGroupsPage goToGroupsPage() {
-        $(By.xpath("//*[@data-l = 't,userAltGroup']")).click();
+        TO_GROUPS_BUTTON.click();
         return new UserGroupsPage();
     }
 
@@ -30,7 +35,12 @@ public class MainPage extends Page {
     }
 
     public MusicPage goToMusic() {
-        $(By.xpath("//*[@data-l = 't,music']")).click();
+        TO_MUSIC_BUTTON.click();
         return new MusicPage();
+    }
+
+    public PhotoPage goToPhoto() {
+        TO_PHOTOS_BUTTON.click();
+        return new PhotoPage();
     }
 }

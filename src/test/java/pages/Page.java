@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public abstract class Page {
 
-    public final SelenideElement loadableElement;
+    final SelenideElement loadableElement;
 
     public Page(SelenideElement loadableElement) {
         this.loadableElement = loadableElement;
