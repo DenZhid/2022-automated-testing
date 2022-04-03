@@ -5,6 +5,7 @@ import utils.PageLoadException;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -12,15 +13,16 @@ public class MainPage extends Page {
 
     private static final SelenideElement TO_GROUPS_BUTTON = $(byXpath("//*[@data-l = 't,userAltGroup']"));
     private static final SelenideElement TO_MUSIC_BUTTON = $(byXpath("//*[@data-l = 't,music']"));
-    private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//a[@data-l = 't,userPhotos']"));
+    private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//*[@data-l = 't,userPhotos']"));
+    private static final SelenideElement TO_USER_PROFILE_BUTTON = $(byXpath("//*[@data-l = 't,userPage']"));
 
     public MainPage() throws PageLoadException {
-        super($(byXpath("//*[@data-l = 't,userPage']")));
+        super(TO_USER_PROFILE_BUTTON);
     }
 
     @Override
-    void checkIfPresent() {
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new NotLoggedException("Invalid logging operation");
         }
     }

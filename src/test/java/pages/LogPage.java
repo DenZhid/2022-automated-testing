@@ -6,6 +6,7 @@ import utils.User;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,8 +20,8 @@ public class LogPage extends Page {
     }
 
     @Override
-    void checkIfPresent() {
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new LogPageException("Something went wrong...");
         }
     }

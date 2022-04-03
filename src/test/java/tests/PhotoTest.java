@@ -48,10 +48,11 @@ public class PhotoTest extends ParentTest {
     public void changeAvatarTest() {
 
     }
-
+/*
     // Удаляем все созданные альбомы и добавленные фото
+    @Disabled
     @AfterAll
     public void cleanupPhotos() {
 
-    }
+    }*/
 }

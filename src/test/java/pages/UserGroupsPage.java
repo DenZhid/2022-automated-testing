@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import utils.PageLoadException;
 import utils.UserGroupsPageException;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -15,9 +16,8 @@ public class UserGroupsPage extends Page {
     }
 
     @Override
-    void checkIfPresent() {
-        sleep(500);
-        if (!loadableElement.exists()) {
+    void check() {
+        if (!loadableElement.should(visible).isDisplayed()) {
             throw new UserGroupsPageException("Invalid user groups page initialization");
         }
     }

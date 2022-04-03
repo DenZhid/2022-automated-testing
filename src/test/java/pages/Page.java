@@ -12,18 +12,18 @@ public abstract class Page {
 
     public Page(SelenideElement loadableElement) {
         this.loadableElement = loadableElement;
-        checkIfPresent();
+        check();
     }
 
     public Page(String url, SelenideElement loadableElement) {
         open(url);
         this.loadableElement = loadableElement;
-        checkIfPresent();
+        check();
     }
 
     /**
      * Проверка нахождения на нужной странице.
      */
-    abstract void checkIfPresent() throws PageLoadException;
+    abstract void check() throws PageLoadException;
 
 }
