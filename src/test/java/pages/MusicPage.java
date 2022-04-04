@@ -1,14 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
-import utils.PageLoadException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class MusicPage extends Page{
 
-    public MusicPage() throws PageLoadException {
+    public MusicPage() {
         super("Music page init error", $(By.xpath("//*[@class='play __active']")));
     }
 
