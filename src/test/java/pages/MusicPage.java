@@ -1,13 +1,11 @@
 package pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class MusicPage extends Page {
     private static final SelenideElement ARTIST_IMAGE_OVERLAY = $(byXpath("//a[@slot = 'image-overlay']"));
@@ -22,14 +20,12 @@ public class MusicPage extends Page {
     }
 
     public MusicPage search(String query) {
-        SEARCH_INPUT.should(visible).setValue(query);
-        sleep(100);
-        SEARCH_INPUT.pressEnter();
+        SEARCH_INPUT.should(visible).setValue(query).pressEnter();
         return this;
     }
 
     public boolean checkHasSong(String songName) {
-        return $(byLinkText(songName)).shouldBe(visible).exists();
+        return $(byLinkText(songName)).should(visible).exists();
     }
 
     public MusicPage goToBestMatchArtist() {
@@ -43,13 +39,13 @@ public class MusicPage extends Page {
     }
 
     public MusicPage addMusic(String songName) {
-        $(byLinkText(songName)).shouldBe(visible).hover();
+        $(byLinkText(songName)).should(visible).hover();
         ADD_BUTTON.should(visible).click();
         return this;
     }
 
     public void deleteSong(String songName) {
-        $(byLinkText(songName)).shouldBe(visible).hover();
+        $(byLinkText(songName)).should(visible).hover();
         DELETE_BUTTON.should(visible).click();
     }
 }
