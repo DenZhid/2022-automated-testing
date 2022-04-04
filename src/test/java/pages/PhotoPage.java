@@ -27,8 +27,8 @@ public class PhotoPage extends Page {
     private static final ElementsCollection ALL_PHOTOS = $$(byXpath("//img[@class='photo-img__tt8r9']"));
     private static final SelenideElement LAST_PHOTO_LINK = $(byXpath("//div[contains(@class, 'photo-card')]//a"));
     private static final SelenideElement SET_AS_AVATAR_BUTTON =
-            $(byXpath("//button[contains(@class, 'link')]//span[contains(text(), 'профиля')]")); // Not good Xpath
-    private static final SelenideElement CONFIRM_AVATAR_BUTTON = $(byXpath("//button[contains(@class, 'core')]")); // Not good Xpath
+            $(byXpath("//button[contains(@class, 'link')]//span[contains(text(), 'профиля')]"));
+    private static final SelenideElement CONFIRM_AVATAR_BUTTON = $(byXpath("//button[contains(@class, 'core')]"));
 
     public PhotoPage() {
         super("Photo page init error", PHOTO_TABS_HEADER);
@@ -53,7 +53,7 @@ public class PhotoPage extends Page {
     public PhotoPage uploadPhoto(String path) {
         INPUT_UPLOAD_PHOTO_FIELD.shouldBe(exist).uploadFile(new File(path));
         END_OF_UPLOAD_INDICATOR.shouldBe(visible);
-        refresh();
+        refresh(); // Нужен для уверенности в прогрузке нового изображения
         return this;
     }
 
