@@ -2,13 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 
-import utils.PageLoadException;
-
 import static com.codeborne.selenide.Selenide.$;
 
 public class UserGroupsPage extends Page {
 
-    public UserGroupsPage() throws PageLoadException {
+    public UserGroupsPage() {
         super("Can't open user groups",$(By.id("hook_Block_UserGroupsPanelBlock")));
     }
 

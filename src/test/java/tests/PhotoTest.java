@@ -1,14 +1,14 @@
 package tests;
 
-import org.junit.jupiter.api.AfterAll;
+import pages.LogPage;
+import utils.User;
+
+//import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import pages.LogPage;
-import utils.User;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,7 +22,7 @@ public class PhotoTest extends ParentTest {
         user = new User(USER_LOGIN, USER_PASSWORD);
     }
 
-    // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом
+    // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом -> проверяем, что альбом создан
     @Test
     public void createEmptyPhotoAlbumTest() {
         assertTrue(new LogPage()
@@ -33,7 +33,7 @@ public class PhotoTest extends ParentTest {
         );
     }
 
-    // Тест: логинимся -> загружаем фото
+    // Тест: логинимся -> загружаем фото -> проверяем, что количество фото пользователя увеличилось
     @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"cat.png", "kitty.png"})
@@ -41,17 +41,16 @@ public class PhotoTest extends ParentTest {
 
     }
 
-    // Тест: логинимся -> загружаем фото -> ставим фото, как аватар
+    // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватар изменилась
     @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"cat.png", "kitty.png"})
     public void changeAvatarTest() {
 
     }
-/*
-    // Удаляем все созданные альбомы и добавленные фото
-    @Disabled
-    @AfterAll
+
+    // Удаляем все созданные альбомы и добавленные фото, возвращаем начальный автар
+    /*@AfterAll
     public void cleanupPhotos() {
 
     }*/

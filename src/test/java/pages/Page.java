@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import utils.PageLoadException;
+import utils.PageNotLoadedException;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -28,10 +28,10 @@ public abstract class Page {
     /**
      * Проверка нахождения на нужной странице.
      */
-    void check() throws PageLoadException {
+    void check() throws PageNotLoadedException {
         for (SelenideElement loadableElement : loadableElements) {
             if (!loadableElement.should(visible).isDisplayed()) {
-                throw new PageLoadException(errorMessage);
+                throw new PageNotLoadedException(errorMessage);
             }
         }
     }

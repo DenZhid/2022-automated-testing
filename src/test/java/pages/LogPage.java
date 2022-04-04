@@ -1,6 +1,5 @@
 package pages;
 
-import utils.PageLoadException;
 import utils.User;
 
 import com.codeborne.selenide.SelenideElement;
@@ -13,7 +12,7 @@ public class LogPage extends Page {
     private static final SelenideElement LOGIN_FIELD = $(byXpath("//input[@name='st.email']"));
     private static final SelenideElement PASSWORD_FIELD = $(byXpath("//input[@name='st.password']"));
 
-    public LogPage() throws PageLoadException {
+    public LogPage() {
         super("Log page init error", $(byXpath("//input[@name='st.password']")));
     }
 
