@@ -1,10 +1,10 @@
 package tests;
 
 import pages.LogPage;
+import pages.MainPage;
 import pages.PhotoPage;
 import utils.User;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static java.io.File.separator;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.number.OrderingComparison.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,7 +45,9 @@ public class PhotoTest extends ParentTest {
     @ParameterizedTest
     @ValueSource(strings = {"cat.png", "kitty.png"})
     public void uploadPhotoTest(String photoName) {
-        PhotoPage photoPage = new LogPage().login(user).goToPhoto();
+        PhotoPage photoPage = new LogPage()
+                .login(user)
+                .goToPhoto();
         int startPhotoSize = photoPage.getAllPhotosSize();
         photoPage.uploadPhoto(PATH_TO_RESOURCES_FOLDER + photoName);
         int endPhotoSize = photoPage.getAllPhotosSize();
@@ -54,13 +58,15 @@ public class PhotoTest extends ParentTest {
     @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"cat.png", "kitty.png"})
-    public void changeAvatarTest() {
-
-    }
-
-    //Удаляем все созданные альбомы и добавленные фото, возвращаем начальный автар
-    @AfterAll
-    public static void cleanupPhotos() {
-
+    public void changeAvatarTest(String photoName) {
+        MainPage mainPage = new LogPage().login(user);
+        String startAvatarRef = mainPage.getCurrentAvatarRef();
+        mainPage = mainPage
+                .goToPhoto()
+                .uploadPhoto(PATH_TO_RESOURCES_FOLDER + photoName)
+                .setAvatar()
+                .goToMain();
+        String endAvatarRef = mainPage.getCurrentAvatarRef();
+        assertThat(startAvatarRef, not(equalTo(endAvatarRef)));
     }
 }
