@@ -21,8 +21,8 @@ public class GroupPage extends Page {
         super("Group page init error", GROUP_ABOUT);
     }
 
-    public GroupPage(String url) {
-        super("Can't load group with url: " + url, url, GROUP_ABOUT);
+    public GroupPage(String id) {
+        super("Can't load group with id: " + id, "https://ok.ru/group/" + id, GROUP_ABOUT);
     }
 
     public String getName() {
