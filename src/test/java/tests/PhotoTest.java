@@ -3,7 +3,7 @@ package tests;
 import pages.LogPage;
 import utils.User;
 
-//import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -49,9 +49,9 @@ public class PhotoTest extends ParentTest {
 
     }
 
-    // Удаляем все созданные альбомы и добавленные фото, возвращаем начальный автар
-    /*@AfterAll
-    public void cleanupPhotos() {
+    //Удаляем все созданные альбомы и добавленные фото, возвращаем начальный автар
+    @AfterAll
+    public static void cleanupPhotos() {
 
-    }*/
+    }
 }
