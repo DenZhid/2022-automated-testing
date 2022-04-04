@@ -18,7 +18,7 @@ public abstract class Page {
         check();
     }
 
-    public Page( String errorMessage, String url, SelenideElement... loadableElement) {
+    public Page(String errorMessage, String url, SelenideElement... loadableElement) {
         open(url);
         this.errorMessage = errorMessage;
         this.loadableElements = loadableElement;

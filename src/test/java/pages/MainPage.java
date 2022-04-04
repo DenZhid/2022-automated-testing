@@ -12,9 +12,10 @@ public class MainPage extends Page {
     private static final SelenideElement TO_MUSIC_BUTTON = $(byXpath("//*[@data-l = 't,music']"));
     private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//*[@data-l = 't,userPhotos']"));
     private static final SelenideElement TO_USER_PROFILE_BUTTON = $(byXpath("//*[@data-l = 't,userPage']"));
+    private static final SelenideElement AVATAR_ICON = $(byXpath("//img[@id='viewImageLinkId']"));
 
     public MainPage() {
-        super("Main page init error",TO_USER_PROFILE_BUTTON);
+        super("Main page init error", TO_USER_PROFILE_BUTTON);
     }
 
     public UserGroupsPage goToGroupsPage() {
@@ -34,5 +35,9 @@ public class MainPage extends Page {
     public PhotoPage goToPhoto() {
         TO_PHOTOS_BUTTON.should(visible).click();
         return new PhotoPage();
+    }
+
+    public String getCurrentAvatarRef() {
+        return AVATAR_ICON.getAttribute("src");
     }
 }
