@@ -27,16 +27,16 @@ public class PhotoPage extends Page {
 
     @Override
     void check() throws PageNotLoadedException {
-        if (!loadableElement.should(visible).isDisplayed()) {
+        if (!loadableElement.shouldBe(visible).isDisplayed()) {
             throw new PageNotLoadedException("Invalid photo page initialization");
         }
     }
 
     public PhotoPage createAlbum(String albumName) {
         CREATE_ALBUM_BUTTON.click();
-        ALBUM_NAME_EDIT_FIELD.should(visible).setValue(albumName);
-        CONFIRM_CREATING_ALBUM_BUTTON.should(visible).click();
-        BACK_TO_ROOT_PHOTO_PAGE_LINK.should(visible).click();
+        ALBUM_NAME_EDIT_FIELD.shouldBe(visible).setValue(albumName);
+        CONFIRM_CREATING_ALBUM_BUTTON.shouldBe(visible).click();
+        BACK_TO_ROOT_PHOTO_PAGE_LINK.shouldBe(visible).click();
         return this;
     }
 
@@ -44,7 +44,7 @@ public class PhotoPage extends Page {
         return $(byXpath("//div[@class='photo-album-card__cpony']" +
                 "//a[@data-l='t,title']" +
                 "[contains(text(), '"+ albumName +"')]"))
-                .should(visible)
+                .shouldBe(visible)
                 .isDisplayed();
     }
 

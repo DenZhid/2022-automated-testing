@@ -20,7 +20,7 @@ public class LogPage extends Page {
 
     @Override
     void check() throws PageNotLoadedException {
-        if (!loadableElement.should(visible).isDisplayed()) {
+        if (!loadableElement.shouldBe(visible).isDisplayed()) {
             throw new PageNotLoadedException("Invalid log page initialization");
         }
     }

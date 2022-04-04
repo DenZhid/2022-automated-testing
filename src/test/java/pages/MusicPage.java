@@ -16,7 +16,7 @@ public class MusicPage extends Page{
 
     @Override
     void check() {
-        if (!loadableElement.should(visible).isDisplayed()) {
+        if (!loadableElement.shouldBe(visible).isDisplayed()) {
             throw new PageNotLoadedException("Invalid music page initialization");
         }
     }
