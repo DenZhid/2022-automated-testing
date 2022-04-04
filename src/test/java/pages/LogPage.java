@@ -13,7 +13,7 @@ public class LogPage extends Page {
     private static final SelenideElement PASSWORD_FIELD = $(byXpath("//input[@name='st.password']"));
 
     public LogPage() {
-        super("Log page init error", $(byXpath("//input[@name='st.password']")));
+        super("Log page init error", PASSWORD_FIELD);
     }
 
     public MainPage login(User user) {

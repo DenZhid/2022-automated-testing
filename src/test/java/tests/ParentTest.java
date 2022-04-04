@@ -1,9 +1,5 @@
 package tests;
 
-import utils.User;
-
-import com.codeborne.selenide.Configuration;
-
 import com.codeborne.selenide.Configuration;
 
 import org.junit.jupiter.api.AfterEach;
@@ -21,6 +17,7 @@ public class ParentTest {
     public void createWebDriver() {
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         Configuration.browser = "chrome";
+        Configuration.pageLoadTimeout = 10000;
         open("https://ok.ru");
     }
 
