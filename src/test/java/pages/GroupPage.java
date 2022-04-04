@@ -1,52 +1,48 @@
 package pages;
 
-import utils.PageNotLoadedException;
-
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class GroupPage extends Page {
 
-    public final SelenideElement toMembers = $(byXpath("//*[@data-l='outlandermenu,altGroupMembers']"));
+    private final static SelenideElement TO_MEMBERS_BUTTON = $(byXpath("//*[@data-l='outlandermenu,altGroupMembers']"));
+    private final static SelenideElement GROUP_SUBSCRIBE_BUTTON = $(byXpath("//*[@class='button-pro __wide']"));
+    private final static SelenideElement IN_THE_GROUP_ACTION_BUTTON = $(byXpath("//*[@class='dropdown __wide h-mod']"));
+    private final static SelenideElement GROUP_UNSUB_BUTTON = $(byXpath("//*[@class='dropdown_cnt __wide __show']"));
+    private final static SelenideElement GROUP_NAME = $(byXpath("//*[@id='hook_Block_AltGroupInfo']//h1"));
 
-    public GroupPage(String url) {
-        super(url, $(byId("hook_Block_AltGroupInfo")));
+    public GroupPage() {
+        super("Group page init error", $(byId("hook_Block_AltGroupInfo")));
     }
 
-    @Override
-    void check() throws PageNotLoadedException {
-        if (!loadableElement.shouldBe(visible).isDisplayed()) {
-            throw new PageNotLoadedException("Invalid group page initialization");
-        }
+    public GroupPage(String url) {
+        super("Can't load group with url: " + url, url, $(byId("hook_Block_AltGroupInfo")));
     }
 
     public String getName() {
-        return $(byXpath("//*[@id='hook_Block_AltGroupInfo']//h1")).text();
+        return GROUP_NAME.text();
     }
 
     public MembersGroupPage goToMembers() {
-        toMembers.click();
+        TO_MEMBERS_BUTTON.click();
         return new MembersGroupPage();
     }
 
     public GroupPage subscribe() {
-        SelenideElement subBtn = $(byXpath("//*[@class='button-pro __wide']"));
-        if (subBtn.exists()) {
-            subBtn.click();
+        if (GROUP_SUBSCRIBE_BUTTON.exists()) {
+            GROUP_SUBSCRIBE_BUTTON.click();
         }
         return this;
     }
 
     public GroupPage unsubscribe() {
-        SelenideElement unsubBtn = $(byXpath("//*[@class='dropdown __wide h-mod']"));
-        if (unsubBtn.exists()) {
-            unsubBtn.click();
-            $(byXpath("//*[@class='dropdown_cnt __wide __show']")).click();
+        if (IN_THE_GROUP_ACTION_BUTTON.exists()) {
+            IN_THE_GROUP_ACTION_BUTTON.click();
+            GROUP_UNSUB_BUTTON.click();
         }
         return this;
     }

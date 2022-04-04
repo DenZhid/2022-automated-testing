@@ -1,28 +1,20 @@
 package pages;
 
-import utils.PageNotLoadedException;
+import utils.PageLoadException;
 import utils.User;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LogPage extends Page {
 
-    public static final SelenideElement LOGIN_FIELD = $(byXpath("//input[@name='st.email']"));
-    public static final SelenideElement PASSWORD_FIELD = $(byXpath("//input[@name='st.password']"));
+    private static final SelenideElement LOGIN_FIELD = $(byXpath("//input[@name='st.email']"));
+    private static final SelenideElement PASSWORD_FIELD = $(byXpath("//input[@name='st.password']"));
 
-    public LogPage() {
-        super($(byXpath("//input[@name='st.password']")));
-    }
-
-    @Override
-    void check() throws PageNotLoadedException {
-        if (!loadableElement.shouldBe(visible).isDisplayed()) {
-            throw new PageNotLoadedException("Invalid log page initialization");
-        }
+    public LogPage() throws PageLoadException {
+        super("Log page init error", $(byXpath("//input[@name='st.password']")));
     }
 
     public MainPage login(User user) {

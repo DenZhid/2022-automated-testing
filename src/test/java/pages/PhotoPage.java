@@ -1,9 +1,9 @@
 package pages;
 
-import utils.PageNotLoadedException;
-
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import utils.PageLoadException;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -22,21 +22,14 @@ public class PhotoPage extends Page {
     private static final SelenideElement AVATAR = $(byXpath("//img[@id='viewImageLinkId']"));
 
     public PhotoPage() {
-        super(PHOTO_TABS_HEADER);
-    }
-
-    @Override
-    void check() throws PageNotLoadedException {
-        if (!loadableElement.shouldBe(visible).isDisplayed()) {
-            throw new PageNotLoadedException("Invalid photo page initialization");
-        }
+        super("Photo page init error", PHOTO_TABS_HEADER);
     }
 
     public PhotoPage createAlbum(String albumName) {
         CREATE_ALBUM_BUTTON.click();
-        ALBUM_NAME_EDIT_FIELD.shouldBe(visible).setValue(albumName);
-        CONFIRM_CREATING_ALBUM_BUTTON.shouldBe(visible).click();
-        BACK_TO_ROOT_PHOTO_PAGE_LINK.shouldBe(visible).click();
+        ALBUM_NAME_EDIT_FIELD.should(visible).setValue(albumName);
+        CONFIRM_CREATING_ALBUM_BUTTON.should(visible).click();
+        BACK_TO_ROOT_PHOTO_PAGE_LINK.should(visible).click();
         return this;
     }
 
@@ -44,7 +37,7 @@ public class PhotoPage extends Page {
         return $(byXpath("//div[@class='photo-album-card__cpony']" +
                 "//a[@data-l='t,title']" +
                 "[contains(text(), '"+ albumName +"')]"))
-                .shouldBe(visible)
+                .should(visible)
                 .isDisplayed();
     }
 

@@ -1,46 +1,37 @@
 package pages;
 
-import utils.PageNotLoadedException;
+import org.openqa.selenium.By;
+import utils.PageLoadException;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byLinkText;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class MusicPage extends Page{
 
-    public MusicPage() {
-        super($(byXpath("//*[@class='play __active']")));
-    }
-
-    @Override
-    void check() {
-        if (!loadableElement.shouldBe(visible).isDisplayed()) {
-            throw new PageNotLoadedException("Invalid music page initialization");
-        }
+    public MusicPage() throws PageLoadException {
+        super("Music page init error", $(By.xpath("//*[@class='play __active']")));
     }
 
     public MusicPage search(String query) {
-        $(byXpath("//input[@placeholder = 'Поиск']")).setValue(query);//.pressEnter();
+        $(By.xpath("//input[@placeholder = 'Поиск']")).setValue(query);//.pressEnter();
         sleep(500);
-        $(byXpath("//input[@placeholder = 'Поиск']")).pressEnter();
+        $(By.xpath("//input[@placeholder = 'Поиск']")).pressEnter();
         sleep(500);
         return this;
     }
 
     public boolean checkHasSong(String songName) {
-        return $(byLinkText(songName)).exists();
+        return $(By.linkText(songName)).exists();
     }
 
     public MusicPage goToBestMatchArtist() {
-        $(byXpath("//a[@slot = 'image-overlay']")).click();
+        $(By.xpath("//a[@slot = 'image-overlay']")).click();
         sleep(500);
         return this;
     }
 
     public MusicPage toMyMusic() {
-        $(byXpath("//a[@data-l= 't,library']")).click();
+        $(By.xpath("//a[@data-l= 't,library']")).click();
         sleep(500);
         return this;
     }
