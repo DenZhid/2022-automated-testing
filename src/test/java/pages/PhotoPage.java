@@ -22,14 +22,7 @@ public class PhotoPage extends Page {
     private static final SelenideElement AVATAR = $(byXpath("//img[@id='viewImageLinkId']"));
 
     public PhotoPage() {
-        super(PHOTO_TABS_HEADER);
-    }
-
-    @Override
-    void check() throws PageLoadException {
-        if (!loadableElement.should(visible).isDisplayed()) {
-            throw new PageLoadException("Photo page hasn't been displayed");
-        }
+        super("Photo page init error", PHOTO_TABS_HEADER);
     }
 
     public PhotoPage createAlbum(String albumName) {

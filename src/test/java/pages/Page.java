@@ -4,26 +4,36 @@ import com.codeborne.selenide.SelenideElement;
 
 import utils.PageLoadException;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
 public abstract class Page {
 
-    final SelenideElement loadableElement;
+    protected final SelenideElement[] loadableElements;
+    private final String errorMessage;
 
-    public Page(SelenideElement loadableElement) {
-        this.loadableElement = loadableElement;
+    public Page(String errorMessage, SelenideElement... loadableElement) {
+        this.errorMessage = errorMessage;
+        this.loadableElements = loadableElement;
         check();
     }
 
-    public Page(String url, SelenideElement loadableElement) {
+    public Page( String errorMessage, String url, SelenideElement... loadableElement) {
         open(url);
-        this.loadableElement = loadableElement;
+        this.errorMessage = errorMessage;
+        this.loadableElements = loadableElement;
         check();
     }
 
     /**
      * Проверка нахождения на нужной странице.
      */
-    abstract void check() throws PageLoadException;
+    void check() throws PageLoadException {
+        for (SelenideElement loadableElement : loadableElements) {
+            if (!loadableElement.should(visible).isDisplayed()) {
+                throw new PageLoadException(errorMessage);
+            }
+        }
+    }
 
 }

@@ -1,24 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
-import utils.MusicPageException;
 import utils.PageLoadException;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class MusicPage extends Page{
 
     public MusicPage() throws PageLoadException {
-        super($(By.xpath("//*[@class='play __active']")));
-    }
-
-    @Override
-    void check() {
-        if (!loadableElement.should(visible).isDisplayed()) {
-            throw new MusicPageException("Invalid music page initialization");
-        }
+        super("Music page init error", $(By.xpath("//*[@class='play __active']")));
     }
 
     public MusicPage search(String query) {

@@ -1,11 +1,9 @@
 package pages;
 
-import utils.NotLoggedException;
 import utils.PageLoadException;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -17,14 +15,7 @@ public class MainPage extends Page {
     private static final SelenideElement TO_USER_PROFILE_BUTTON = $(byXpath("//*[@data-l = 't,userPage']"));
 
     public MainPage() throws PageLoadException {
-        super(TO_USER_PROFILE_BUTTON);
-    }
-
-    @Override
-    void check() {
-        if (!loadableElement.should(visible).isDisplayed()) {
-            throw new NotLoggedException("Invalid logging operation");
-        }
+        super("Main page init error",TO_USER_PROFILE_BUTTON);
     }
 
     public UserGroupsPage goToGroupsPage() {

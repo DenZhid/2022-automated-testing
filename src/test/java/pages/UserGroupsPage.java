@@ -3,23 +3,13 @@ package pages;
 import org.openqa.selenium.By;
 
 import utils.PageLoadException;
-import utils.UserGroupsPageException;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class UserGroupsPage extends Page {
 
     public UserGroupsPage() throws PageLoadException {
-        super($(By.id("hook_Block_UserGroupsPanelBlock")));
-    }
-
-    @Override
-    void check() {
-        if (!loadableElement.should(visible).isDisplayed()) {
-            throw new UserGroupsPageException("Invalid user groups page initialization");
-        }
+        super("Can't open user groups",$(By.id("hook_Block_UserGroupsPanelBlock")));
     }
 
     public boolean hasGroup(String groupId) {

@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidArgumentException;
 
-import utils.GroupPageException;
 import utils.User;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -13,14 +12,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class MembersGroupPage extends Page {
 
     public MembersGroupPage() {
-        super($(By.id("GroupMembersMenu")));
-    }
-
-    @Override
-    void check() {
-        if (!loadableElement.should(visible).isDisplayed()) {
-            throw new GroupPageException("Members group page init fail");
-        }
+        super("Error view members of group", $(By.id("GroupMembersMenu")));
     }
 
     public boolean hasUser(User user) {
