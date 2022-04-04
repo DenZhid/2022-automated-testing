@@ -17,7 +17,6 @@ public class ParentTest {
     public void createWebDriver() {
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         Configuration.browser = "chrome";
-        Configuration.pageLoadTimeout = 10000;
         open("https://ok.ru");
     }
 
