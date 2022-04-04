@@ -1,37 +1,38 @@
 package pages;
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byLinkText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
-public class MusicPage extends Page{
+public class MusicPage extends Page {
+    private final static SelenideElement ARTIST_IMAGE_OVERLAY = $(byXpath("//a[@slot = 'image-overlay']"));
+    private final static SelenideElement SEARCH_INPUT = $(byXpath("//input[@placeholder = 'Поиск']"));
+    private final static SelenideElement MY_MUSIC_BUTTON = $(byXpath("//a[@data-l= 't,library']"));
+    private static final SelenideElement PLAY_BUTTON = $(byXpath("//*[@class='play __active']"));
 
     public MusicPage() {
-        super("Music page init error", $(By.xpath("//*[@class='play __active']")));
+        super("Music page init error", PLAY_BUTTON);
     }
 
     public MusicPage search(String query) {
-        $(By.xpath("//input[@placeholder = 'Поиск']")).setValue(query);//.pressEnter();
-        sleep(500);
-        $(By.xpath("//input[@placeholder = 'Поиск']")).pressEnter();
-        sleep(500);
+        SEARCH_INPUT.should(visible).setValue(query).pressEnter();
         return this;
     }
 
     public boolean checkHasSong(String songName) {
-        return $(By.linkText(songName)).exists();
+        return $(byLinkText(songName)).should(visible).isDisplayed();
     }
 
     public MusicPage goToBestMatchArtist() {
-        $(By.xpath("//a[@slot = 'image-overlay']")).click();
-        sleep(500);
+        ARTIST_IMAGE_OVERLAY.should(visible).click();
         return this;
     }
 
     public MusicPage toMyMusic() {
-        $(By.xpath("//a[@data-l= 't,library']")).click();
-        sleep(500);
+        MY_MUSIC_BUTTON.should(visible).click();
         return this;
     }
 }
