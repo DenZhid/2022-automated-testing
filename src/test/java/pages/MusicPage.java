@@ -23,7 +23,7 @@ public class MusicPage extends Page {
     }
 
     public boolean checkHasSong(String songName) {
-        return $(byLinkText(songName)).exists();
+        return $(byLinkText(songName)).should(visible).isDisplayed();
     }
 
     public MusicPage goToBestMatchArtist() {
