@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -17,21 +18,21 @@ public class MainPage extends Page {
     }
 
     public UserGroupsPage goToGroupsPage() {
-        TO_GROUPS_BUTTON.click();
+        TO_GROUPS_BUTTON.should(visible).click();
         return new UserGroupsPage();
     }
 
     public GroupPage goToGroup(String groupId) {
-        return new GroupPage("https://ok.ru/group/" + groupId);
+        return new GroupPage(groupId);
     }
 
     public MusicPage goToMusic() {
-        TO_MUSIC_BUTTON.click();
+        TO_MUSIC_BUTTON.should(visible).click();
         return new MusicPage();
     }
 
     public PhotoPage goToPhoto() {
-        TO_PHOTOS_BUTTON.click();
+        TO_PHOTOS_BUTTON.should(visible).click();
         return new PhotoPage();
     }
 }
