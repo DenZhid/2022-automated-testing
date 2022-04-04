@@ -36,7 +36,7 @@ public class GroupTest extends ParentTest {
     // Тест: Заходим в группу по ссылке -> проверяем, имя группы
     @Test
     public void groupNameTest() {
-        assertEquals(GROUP_NAME, new GroupPage("https://ok.ru/group/" + GROUP_ID).getName());
+        assertEquals(GROUP_NAME, new GroupPage(GROUP_ID).getName());
     }
 
     // Тест: Логинимся на одноклассниках -> заходим в группу -> идем в участники -> проверяем что участник есть в группе
@@ -63,7 +63,7 @@ public class GroupTest extends ParentTest {
                 .hasGroup(ANOTHER_GROUP_ID)
         );
 
-        assertFalse(new GroupPage("https://ok.ru/group/" + ANOTHER_GROUP_ID)
+        assertFalse(new GroupPage(ANOTHER_GROUP_ID)
                 .unsubscribe()
                 .goToMain()
                 .goToGroupsPage()
