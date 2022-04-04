@@ -1,7 +1,6 @@
 package pages;
 
-import utils.NotLoggedException;
-import utils.PageLoadException;
+import utils.PageNotLoadedException;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -16,14 +15,14 @@ public class MainPage extends Page {
     private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//*[@data-l = 't,userPhotos']"));
     private static final SelenideElement TO_USER_PROFILE_BUTTON = $(byXpath("//*[@data-l = 't,userPage']"));
 
-    public MainPage() throws PageLoadException {
+    public MainPage() {
         super(TO_USER_PROFILE_BUTTON);
     }
 
     @Override
     void check() {
         if (!loadableElement.should(visible).isDisplayed()) {
-            throw new NotLoggedException("Invalid logging operation");
+            throw new PageNotLoadedException("Invalid logging operation");
         }
     }
 

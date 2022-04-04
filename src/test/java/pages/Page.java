@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import utils.PageLoadException;
+import utils.PageNotLoadedException;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -24,6 +24,6 @@ public abstract class Page {
     /**
      * Проверка нахождения на нужной странице.
      */
-    abstract void check() throws PageLoadException;
+    abstract void check() throws PageNotLoadedException;
 
 }

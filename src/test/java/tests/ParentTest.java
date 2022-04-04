@@ -1,5 +1,9 @@
 package tests;
 
+import utils.User;
+
+import com.codeborne.selenide.Configuration;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -13,6 +17,9 @@ public class ParentTest {
 
     @BeforeEach
     public void createWebDriver() {
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        Configuration.browser = "chrome";
+        Configuration.pageLoadTimeout = 60000;
         open("https://ok.ru");
     }
 

@@ -1,9 +1,9 @@
 package pages;
 
+import utils.PageNotLoadedException;
+
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
-import utils.PageLoadException;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -26,9 +26,9 @@ public class PhotoPage extends Page {
     }
 
     @Override
-    void check() throws PageLoadException {
+    void check() throws PageNotLoadedException {
         if (!loadableElement.should(visible).isDisplayed()) {
-            throw new PageLoadException("Photo page hasn't been displayed");
+            throw new PageNotLoadedException("Invalid photo page initialization");
         }
     }
 
