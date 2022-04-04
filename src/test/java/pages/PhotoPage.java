@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class PhotoPage extends Page {
 
@@ -18,8 +19,8 @@ public class PhotoPage extends Page {
     private static final SelenideElement ALBUM_NAME_EDIT_FIELD = $(byXpath("//textarea[@data-l='t,textField-editor']"));
     private static final SelenideElement CONFIRM_CREATING_ALBUM_BUTTON = $(byXpath("//input[@data-l='t,confirm']"));
     private static final SelenideElement BACK_TO_ROOT_PHOTO_PAGE_LINK = $(byXpath("//a[@data-l='t,root']"));
-    private static final SelenideElement UPLOAD_PHOTO_BUTTON = $(byXpath("//span[@data-l='t,upload-new-photo']"));
     private static final SelenideElement INPUT_UPLOAD_PHOTO_FIELD = $(byXpath("//span[@data-l='t,upload-new-photo']//input"));
+    private static final SelenideElement END_OF_UPLOAD_INDICATOR = $(byXpath("//div[@enddxuz07]"));
     private static final ElementsCollection ALL_PHOTOS = $$(byXpath("//img[@class='photo-img__tt8r9']"));
     private static final SelenideElement AVATAR = $(byXpath("//img[@id='viewImageLinkId']"));
 
@@ -47,12 +48,13 @@ public class PhotoPage extends Page {
 
     }
 
-    public void uploadPhoto(String fileName) {
-        INPUT_UPLOAD_PHOTO_FIELD.shouldBe(exist).uploadFile(new File("fileName"));
+    public void uploadPhoto(String path) {
+        INPUT_UPLOAD_PHOTO_FIELD.shouldBe(exist).uploadFile(new File(path));
+        sleep(5000); //This need to be changed
     }
 
-    public boolean hasUploadedPhoto() {
-        return false;
+    public int getAllPhotosSize() {
+        return ALL_PHOTOS.size();
     }
 
     public void deletePhoto() {
