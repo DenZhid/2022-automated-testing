@@ -55,7 +55,6 @@ public class PhotoTest extends ParentTest {
     }
 
     // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватара изменилась
-    @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"cat.png", "kitty.png"})
     public void changeAvatarTest(String photoName) {
