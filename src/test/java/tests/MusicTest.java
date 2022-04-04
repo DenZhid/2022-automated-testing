@@ -1,6 +1,7 @@
 package tests;
 
 import pages.LogPage;
+import pages.MusicPage;
 import utils.User;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -45,13 +46,20 @@ public class MusicTest extends ParentTest {
         );
     }
 
-    // Тест: логинимся -> идем в окно с музыкой -> своя музыка -> проверяем, что там есть песня
+    // Тест: логинимся -> идем в окно с музыкой -> ищем песню -> добавляем ->
+    // -> своя музыка -> проверяем, что там есть песня -> удаляем
     @Test
     public void myMusicTest() {
-        assertTrue(new LogPage()
+        MusicPage init = new LogPage()
                 .login(user)
-                .goToMusic()
-                .toMyMusic()
-                .checkHasSong(FIRST_SONG_NAME));
+                .goToMusic();
+
+        MusicPage myMusic = init
+                .search(FIRST_GROUP_NAME + " " + FIRST_SONG_NAME)
+                .addMusic(FIRST_SONG_NAME)
+                .toMyMusic();
+
+        assertTrue(myMusic.checkHasSong(FIRST_SONG_NAME));
+        myMusic.deleteSong(FIRST_SONG_NAME);
     }
 }
