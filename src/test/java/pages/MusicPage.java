@@ -8,10 +8,12 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MusicPage extends Page {
-    private final static SelenideElement ARTIST_IMAGE_OVERLAY = $(byXpath("//a[@slot = 'image-overlay']"));
-    private final static SelenideElement SEARCH_INPUT = $(byXpath("//input[@placeholder = 'Поиск']"));
-    private final static SelenideElement MY_MUSIC_BUTTON = $(byXpath("//a[@data-l= 't,library']"));
+    private static final SelenideElement ARTIST_IMAGE_OVERLAY = $(byXpath("//a[@slot = 'image-overlay']"));
+    private static final SelenideElement SEARCH_INPUT = $(byXpath("//input[@placeholder = 'Поиск']"));
+    private static final SelenideElement MY_MUSIC_BUTTON = $(byXpath("//a[@data-l= 't,library']"));
     private static final SelenideElement PLAY_BUTTON = $(byXpath("//*[@class='play __active']"));
+    private static final SelenideElement ADD_BUTTON = $(byXpath("//*[@name='controls']//*[@title='Добавить в мою музыку']"));
+    private static final SelenideElement DELETE_BUTTON = $(byXpath("//*[@name='controls']//*[@data-tsid='remove_track']"));
 
     public MusicPage() {
         super("Music page init error", PLAY_BUTTON);
@@ -23,7 +25,7 @@ public class MusicPage extends Page {
     }
 
     public boolean checkHasSong(String songName) {
-        return $(byLinkText(songName)).should(visible).isDisplayed();
+        return $(byLinkText(songName)).should(visible).exists();
     }
 
     public MusicPage goToBestMatchArtist() {
@@ -34,5 +36,16 @@ public class MusicPage extends Page {
     public MusicPage toMyMusic() {
         MY_MUSIC_BUTTON.should(visible).click();
         return this;
+    }
+
+    public MusicPage addMusic(String songName) {
+        $(byLinkText(songName)).should(visible).hover();
+        ADD_BUTTON.should(visible).click();
+        return this;
+    }
+
+    public void deleteSong(String songName) {
+        $(byLinkText(songName)).should(visible).hover();
+        DELETE_BUTTON.should(visible).click();
     }
 }
