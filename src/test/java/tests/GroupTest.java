@@ -17,7 +17,6 @@ public class GroupTest extends ParentTest {
     private static User user;
     private static final User someUser = new User(563756113404L);
     private final static String GROUP_ID = "53245288710321"; // ID группы vk edu
-    private final static String ANOTHER_GROUP_ID = "59289969557563";
     private final static String GROUP_NAME = "Образовательный центр VK в Политехе";
 
     @BeforeAll
