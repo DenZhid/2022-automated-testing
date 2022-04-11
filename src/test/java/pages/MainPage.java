@@ -51,7 +51,7 @@ public class MainPage extends Page {
         private static final SelenideElement TO_FRIENDS_BUTTON = $(byId("hook_Block_HeaderTopFriendsInToolbar"));
         private static final SelenideElement TO_GUESTS_BUTTON = $(byId("hook_Block_HeaderTopNewEventsInToolbar"));
         private static final SelenideElement TO_TOP_NEWS_FEEDBACK_BUTTON = $(byId("HeaderTopNewFeedbackInToolbar"));
-        private static final SelenideElement TO_MUSIC_BUTTON = $(byId("toolbar_nav_i_ic"));
+        private static final SelenideElement TO_MUSIC_BUTTON = $(byXpath("//*[@data-l = 't,music']"));
 
         public static List<SelenideElement> getAllTabs() {
             List<SelenideElement> list = new ArrayList<>();
