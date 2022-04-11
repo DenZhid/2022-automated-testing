@@ -63,7 +63,7 @@ public class GroupTest extends ParentTest {
     //       Отписаться от группы -> проверить что группа не отображается в группах юзера
     @ParameterizedTest
     @Tag("Groups")
-    @Timeout(value = 10)
+    @Timeout(value = 15)
     @ValueSource(strings = {"59289969557563", "59293922885670"})
     public void groupSubUnsubTest(String groupId) {
         assertTrue(new LogPage()
