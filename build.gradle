@@ -15,8 +15,13 @@ test {
 
 dependencies {
     def jupiter_version = '5.8.2'
+    def platform_version = '1.8.2'
+    implementation "org.junit.platform:junit-platform-suite-engine:$platform_version"
+    testImplementation('org.slf4j:slf4j-simple:1.7.36')
     testImplementation 'com.codeborne:selenide:6.4.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation "org.junit.platform:junit-platform-suite-api:$platform_version"
+    testImplementation "org.junit.platform:junit-platform-runner:$platform_version"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
