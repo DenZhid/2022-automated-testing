@@ -27,11 +27,9 @@ public class PhotoPage extends Page {
     private static final SelenideElement INPUT_UPLOAD_PHOTO_FIELD =
             $(byXpath("//span[@data-l='t,upload-new-photo']//input"));
     private static final SelenideElement LAST_PHOTO_LINK = $(byXpath("//div[contains(@class, 'photo-card')]//a"));
-    private static final SelenideElement PHOTO_TABS_HEADER = $(byXpath("//div[@class='filter photo-vitrine-tabs']"));
+    private static final SelenideElement PHOTO_TABS_HEADER = $(byXpath("//div[contains(@class, 'photo-vitrine-tabs')]"));
     private static final SelenideElement SET_AS_AVATAR_BUTTON =
             $(byXpath("//button[contains(@class, 'link')]//span[contains(text(), 'профиля')]"));
-    private static final SelenideElement TO_EDIT_BUTTON =
-            $(byXpath("//a[contains(@class, 'menu-item') and(not(contains(@class, 'primary')))]"));
 
     public PhotoPage() {
         super("Photo page init error", PHOTO_TABS_HEADER);
@@ -39,7 +37,7 @@ public class PhotoPage extends Page {
 
     public PhotoPage createAlbum(String albumName) {
         CREATE_ALBUM_BUTTON.shouldBe(visible).click();
-        ALBUM_NAME_EDIT_FIELD.shouldBe(visible, Duration.ofSeconds(10)).setValue(albumName);
+        ALBUM_NAME_EDIT_FIELD.shouldBe(visible).setValue(albumName);
         CONFIRM_CREATING_ALBUM_BUTTON.shouldBe(visible).click();
         BACK_TO_ROOT_PHOTO_PAGE_LINK.shouldBe(visible).click();
         return this;
@@ -55,7 +53,7 @@ public class PhotoPage extends Page {
 
     public PhotoPage uploadPhoto(String path) {
         INPUT_UPLOAD_PHOTO_FIELD.shouldBe(exist).uploadFile(new File(path));
-        END_OF_UPLOAD_INDICATOR.shouldBe(visible);
+        END_OF_UPLOAD_INDICATOR.shouldBe(visible, Duration.ofSeconds(10));
         refresh(); // Нужен для уверенности в прогрузке нового изображения
         return this;
     }
@@ -77,9 +75,8 @@ public class PhotoPage extends Page {
     }
 
     public EditAlbumPage goToEditAlbumPage(String albumName) {
-        $(byXpath("//a[text() = '"+ albumName +"']//../..//div[@data-l='t,show-action-menu']"))
+        $(byXpath("//a[@data-l='t,title'][contains(text(),'"+albumName+"')]"))
                 .shouldBe(visible).click();
-        TO_EDIT_BUTTON.shouldBe(exist).click();
         return new EditAlbumPage();
     }
 }

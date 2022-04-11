@@ -7,6 +7,8 @@ import utils.User;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PhotoTest extends ParentTest {
 
     private static final String ALBUM_NAME = "Test album";
-    private static final String PERSONAL_ALBUM_NAME = "Личные фото";
+    private static final String PERSONAL_ALBUM_NAME = "Личные фотографии";
     private static final String PATH_TO_RESOURCES_FOLDER =
             "src" + separator + "test" + separator + "resources" + separator;
     private static User user;
@@ -36,6 +38,7 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом -> проверяем, что альбом создан
     @Test
+    @Tag("Photo")
     void createEmptyPhotoAlbumTest() {
         assertTrue(new LogPage()
                 .login(user)
@@ -47,6 +50,8 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> загружаем фото -> проверяем, что количество фото пользователя увеличилось
     @ParameterizedTest
+    @Tag("Photo")
+    @DisplayName("UploadPhotoTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
     void uploadPhotoTest(String photoName) {
         PhotoPage photoPage = new LogPage()
@@ -60,6 +65,8 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватара изменилась
     @ParameterizedTest
+    @Tag("Photo")
+    @DisplayName("ChangingAvatarTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
     void changeAvatarTest(String photoName) {
         MainPage mainPage = new LogPage().login(user);
@@ -78,7 +85,6 @@ public class PhotoTest extends ParentTest {
     static void cleanup() {
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         Configuration.browser = "chrome";
-        Configuration.pageLoadStrategy = "eager";
         open("https://ok.ru");
         new LogPage()
                 .login(user)
@@ -86,7 +92,9 @@ public class PhotoTest extends ParentTest {
                 .goToEditAlbumPage(ALBUM_NAME)
                 .deleteAlbum()
                 .goToEditAlbumPage(PERSONAL_ALBUM_NAME)
+                .deletePhotoByNumber(3)
                 .deletePhotoByNumber(2)
-                .deletePhotoByNumber(1);
+                .deletePhotoByNumber(1)
+                .deletePhotoByNumber(0);
     }
 }
