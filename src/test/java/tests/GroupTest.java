@@ -6,6 +6,8 @@ import utils.User;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,7 +17,6 @@ public class GroupTest extends ParentTest {
     private static User user;
     private static final User someUser = new User(563756113404L);
     private final static String GROUP_ID = "53245288710321"; // ID группы vk edu
-    private final static String ANOTHER_GROUP_ID = "59289969557563";
     private final static String GROUP_NAME = "Образовательный центр VK в Политехе";
 
     @BeforeAll
@@ -52,22 +53,23 @@ public class GroupTest extends ParentTest {
 
     // Тест: Логин -> подписаться на группу если не подписан -> проверить что группа отображается в группах юзера ->
     //       Отписаться от группы -> проверить что группа не отображается в группах юзера
-    @Test
-    public void groupSubUnsubTest() {
+    @ParameterizedTest
+    @ValueSource(strings = {"59289969557563", "59293922885670"})
+    public void groupSubUnsubTest(String groupId) {
         assertTrue(new LogPage()
                 .login(user)
-                .goToGroup(ANOTHER_GROUP_ID)
+                .goToGroup(groupId)
                 .subscribe()
                 .goToMain()
                 .goToGroupsPage()
-                .hasGroup(ANOTHER_GROUP_ID)
+                .hasGroup(groupId)
         );
 
-        assertFalse(new GroupPage(ANOTHER_GROUP_ID)
+        assertFalse(new GroupPage(groupId)
                 .unsubscribe()
                 .goToMain()
                 .goToGroupsPage()
-                .hasGroup(ANOTHER_GROUP_ID)
+                .hasGroup(groupId)
         );
     }
 
