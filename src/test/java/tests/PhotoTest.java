@@ -1,15 +1,11 @@
 package tests;
 
+import org.junit.jupiter.api.*;
 import pages.LogPage;
 import pages.MainPage;
 import pages.PhotoPage;
 import utils.User;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -38,6 +34,7 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом -> проверяем, что альбом создан
     @Test
+    @Timeout(value = 10)
     @Tag("Photo")
     void createEmptyPhotoAlbumTest() {
         assertTrue(new LogPage()
@@ -50,6 +47,7 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> загружаем фото -> проверяем, что количество фото пользователя увеличилось
     @ParameterizedTest
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("UploadPhotoTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
@@ -65,6 +63,7 @@ public class PhotoTest extends ParentTest {
 
     // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватара изменилась
     @ParameterizedTest
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("ChangingAvatarTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
