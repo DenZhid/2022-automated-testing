@@ -5,6 +5,7 @@ import pages.LogPage;
 import utils.User;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -26,6 +27,7 @@ public class GroupTest extends ParentTest {
 
     // Тест: Логинимся на одноклассниках -> заходим на страницу групп юзера -> проверяем, что есть группа Технополиса
     @Test
+    @Tag("Groups")
     public void userHasGroupInGroupsTest() {
         assertTrue(new LogPage()
                 .login(user)
@@ -36,12 +38,14 @@ public class GroupTest extends ParentTest {
 
     // Тест: Заходим в группу по ссылке -> проверяем, имя группы
     @Test
+    @Tag("Groups")
     public void groupNameTest() {
         assertEquals(GROUP_NAME, new GroupPage(GROUP_ID).getName());
     }
 
     // Тест: Логинимся на одноклассниках -> заходим в группу -> идем в участники -> проверяем что участник есть в группе
     @Test
+    @Tag("Groups")
     public void groupHasUserInMembers() {
         assertTrue(new LogPage()
                 .login(user)
@@ -54,6 +58,7 @@ public class GroupTest extends ParentTest {
     // Тест: Логин -> подписаться на группу если не подписан -> проверить что группа отображается в группах юзера ->
     //       Отписаться от группы -> проверить что группа не отображается в группах юзера
     @ParameterizedTest
+    @Tag("Groups")
     @ValueSource(strings = {"59289969557563", "59293922885670"})
     public void groupSubUnsubTest(String groupId) {
         assertTrue(new LogPage()

@@ -9,17 +9,17 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     def jupiter_version = '5.8.2'
-    testImplementation "com.codeborne:selenide:6.3.5"
+    testImplementation 'com.codeborne:selenide:6.4.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
-}
-
-test {
-    useJUnitPlatform()
 }
 
 compileJava.options.encoding = 'UTF-8'

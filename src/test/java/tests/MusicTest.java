@@ -5,6 +5,7 @@ import pages.MusicPage;
 import utils.User;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,6 +26,7 @@ public class MusicTest extends ParentTest {
 
     // Тест: логинимся -> идем в окно с музыкой -> ищем в поиске песню -> проверяем, что она есть
     @Test
+    @Tag("Music")
     public void groupHasSoundInPreviewTest() {
         assertTrue(new LogPage()
                 .login(user)
@@ -36,6 +38,7 @@ public class MusicTest extends ParentTest {
 
     // Тест: логинимся -> идем в окно с музыкой -> ищем в поиске группу -> переходим к ней -> ищем песню
     @Test
+    @Tag("Music")
     public void groupHasSoundTest() {
         assertTrue(new LogPage()
                 .login(user)
@@ -49,6 +52,7 @@ public class MusicTest extends ParentTest {
     // Тест: логинимся -> идем в окно с музыкой -> ищем песню -> добавляем ->
     // -> своя музыка -> проверяем, что там есть песня -> удаляем
     @Test
+    @Tag("Music")
     public void myMusicTest() {
         MusicPage init = new LogPage()
                 .login(user)
