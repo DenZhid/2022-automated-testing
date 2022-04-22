@@ -4,7 +4,6 @@ import pages.GroupPage;
 import pages.LogPage;
 import utils.User;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,16 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class GroupTest extends ParentTest {
-    private static User user;
+public class GroupTest extends BaseTest {
     private static final User someUser = new User(563756113404L);
     private final static String GROUP_ID = "53245288710321"; // ID группы vk edu
     private final static String GROUP_NAME = "Образовательный центр VK в Политехе";
-
-    @BeforeAll
-    public static void createUser() {
-        user = new User(USER_LOGIN, USER_PASSWORD);
-    }
 
     // Тест: Логинимся на одноклассниках -> заходим на страницу групп юзера -> проверяем, что есть группа Технополиса
     @Test

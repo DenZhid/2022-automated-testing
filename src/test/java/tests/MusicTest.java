@@ -2,27 +2,18 @@ package tests;
 
 import pages.LogPage;
 import pages.MusicPage;
-import utils.User;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MusicTest extends ParentTest {
+public class MusicTest extends BaseTest {
     private static final String FIRST_GROUP_NAME = "Nothing But Thieves";
     private static final String FIRST_SONG_NAME = "Amsterdam";
 
     private static final String SECOND_GROUP_NAME = "System Of A Down";
     private static final String SECOND_SONG_NAME = "Aerials";
-
-    private static User user;
-
-    @BeforeAll
-    public static void createUser() {
-        user = new User(USER_LOGIN, USER_PASSWORD);
-    }
 
     // Тест: логинимся -> идем в окно с музыкой -> ищем в поиске песню -> проверяем, что она есть
     @Test
