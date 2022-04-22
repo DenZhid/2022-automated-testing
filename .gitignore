@@ -10,7 +10,4 @@ build/
 *.iws
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-!**/src/tets/java/resorces/userData.txt
+src/test/resources/userData.txt
