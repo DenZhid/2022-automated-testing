@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Timeout;
 import pages.GroupPage;
 import pages.LogPage;
 import utils.User;
@@ -20,6 +21,7 @@ public class GroupTest extends BaseTest {
 
     // Тест: Логинимся на одноклассниках -> заходим на страницу групп юзера -> проверяем, что есть группа Технополиса
     @Test
+    @Timeout(value = 10)
     @Tag("Groups")
     public void userHasGroupInGroupsTest() {
         assertTrue(new LogPage()
@@ -31,6 +33,7 @@ public class GroupTest extends BaseTest {
 
     // Тест: Заходим в группу по ссылке -> проверяем, имя группы
     @Test
+    @Timeout(value = 10)
     @Tag("Groups")
     public void groupNameTest() {
         assertEquals(GROUP_NAME, new GroupPage(GROUP_ID).getName());
@@ -38,6 +41,7 @@ public class GroupTest extends BaseTest {
 
     // Тест: Логинимся на одноклассниках -> заходим в группу -> идем в участники -> проверяем что участник есть в группе
     @Test
+    @Timeout(value = 10)
     @Tag("Groups")
     public void groupHasUserInMembers() {
         assertTrue(new LogPage()
@@ -52,6 +56,7 @@ public class GroupTest extends BaseTest {
     //       Отписаться от группы -> проверить что группа не отображается в группах юзера
     @ParameterizedTest
     @Tag("Groups")
+    @Timeout(value = 15)
     @ValueSource(strings = {"59289969557563", "59293922885670"})
     public void groupSubUnsubTest(String groupId) {
         assertTrue(new LogPage()

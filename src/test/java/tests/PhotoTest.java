@@ -25,6 +25,7 @@ public class PhotoTest extends BaseTest {
 
     // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом -> проверяем, что альбом создан
     @Test
+    @Timeout(value = 10)
     @Tag("Photo")
     void createEmptyPhotoAlbumTest() {
         assertTrue(new LogPage()
@@ -37,6 +38,7 @@ public class PhotoTest extends BaseTest {
 
     // Тест: логинимся -> загружаем фото -> проверяем, что количество фото пользователя увеличилось
     @ParameterizedTest
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("UploadPhotoTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
@@ -52,6 +54,7 @@ public class PhotoTest extends BaseTest {
 
     // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватара изменилась
     @ParameterizedTest
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("ChangingAvatarTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
