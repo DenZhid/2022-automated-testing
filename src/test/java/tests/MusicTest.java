@@ -7,8 +7,6 @@ import pages.MusicPage;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MusicTest extends BaseTest {
