@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.music.MusicPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class MainPage extends Page {
+public class MainPage extends BasePage {
 
     private static final SelenideElement TO_GROUPS_BUTTON = $(byXpath("//*[@data-l = 't,userAltGroup']"));
     private static final SelenideElement TO_PHOTOS_BUTTON = $(byXpath("//*[@data-l = 't,userPhotos']"));

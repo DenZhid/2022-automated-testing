@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class MembersGroupPage extends Page {
+public class MembersGroupPage extends BasePage {
 
     private final static SelenideElement SEARCH_FIELD = $(byId("search"));
     private final static SelenideElement GROUP_MEMBERS_MENU = $(byId("GroupMembersMenu"));

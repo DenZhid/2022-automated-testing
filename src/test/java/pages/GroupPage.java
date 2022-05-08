@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class GroupPage extends Page {
+public class GroupPage extends BasePage {
 
     private final static SelenideElement TO_MEMBERS_BUTTON = $(byXpath("//*[@data-l='outlandermenu,altGroupMembers']"));
     private final static SelenideElement GROUP_SUBSCRIBE_BUTTON = $(byXpath("//*[@class='button-pro __wide']"));

@@ -18,9 +18,9 @@ import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.open;
 import static java.io.File.separator;
 
-abstract class BaseTest {
+abstract public class BaseTest {
 
-    static User user;
+    protected static User user;
     static final String PATH_TO_RESOURCES_FOLDER = "src" + separator + "test" + separator + "resources" + separator;
 
     @BeforeAll
