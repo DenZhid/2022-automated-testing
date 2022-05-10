@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Timeout;
 import pages.GroupPage;
-import pages.LogPage;
+import pages.LoginPage;
 import utils.User;
 
 import org.junit.jupiter.api.Tag;
@@ -24,7 +24,7 @@ public class GroupTest extends BaseTest {
     @Timeout(value = 10)
     @Tag("Groups")
     public void userHasGroupInGroupsTest() {
-        assertTrue(new LogPage()
+        assertTrue(new LoginPage()
                 .login(user)
                 .goToGroupsPage()
                 .hasGroup(GROUP_ID)
@@ -44,7 +44,7 @@ public class GroupTest extends BaseTest {
     @Timeout(value = 10)
     @Tag("Groups")
     public void groupHasUserInMembers() {
-        assertTrue(new LogPage()
+        assertTrue(new LoginPage()
                 .login(user)
                 .goToGroup(GROUP_ID)
                 .goToMembers()
@@ -59,7 +59,7 @@ public class GroupTest extends BaseTest {
     @Timeout(value = 15)
     @ValueSource(strings = {"59289969557563", "59293922885670"})
     public void groupSubUnsubTest(String groupId) {
-        assertTrue(new LogPage()
+        assertTrue(new LoginPage()
                 .login(user)
                 .goToGroup(groupId)
                 .subscribe()

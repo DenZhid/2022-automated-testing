@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.refresh;
 
-public class PhotoPage extends Page {
+public class PhotoPage extends BasePage {
 
     private static final ElementsCollection ALL_PHOTOS = $$(byXpath("//img[@class='photo-img__tt8r9']"));
     private static final SelenideElement ALBUM_NAME_EDIT_FIELD = $(byXpath("//textarea[@data-l='t,textField-editor']"));

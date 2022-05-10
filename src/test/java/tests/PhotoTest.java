@@ -1,6 +1,6 @@
 package tests;
 
-import pages.LogPage;
+import pages.LoginPage;
 import pages.MainPage;
 import pages.PhotoPage;
 
@@ -29,7 +29,7 @@ public class PhotoTest extends BaseTest {
     @Timeout(value = 10)
     @Tag("Photo")
     void createEmptyPhotoAlbumTest() {
-        assertTrue(new LogPage()
+        assertTrue(new LoginPage()
                 .login(user)
                 .goToPhoto()
                 .createAlbum(ALBUM_NAME)
@@ -44,7 +44,7 @@ public class PhotoTest extends BaseTest {
     @DisplayName("UploadPhotoTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
     void uploadPhotoTest(String photoName) {
-        PhotoPage photoPage = new LogPage()
+        PhotoPage photoPage = new LoginPage()
                 .login(user)
                 .goToPhoto();
         int startPhotoSize = photoPage.getAllPhotosSize();
@@ -60,7 +60,7 @@ public class PhotoTest extends BaseTest {
     @DisplayName("ChangingAvatarTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
     void changeAvatarTest(String photoName) {
-        MainPage mainPage = new LogPage().login(user);
+        MainPage mainPage = new LoginPage().login(user);
         String startAvatarRef = mainPage.getCurrentAvatarRef();
         mainPage = mainPage
                 .goToPhoto()
@@ -75,7 +75,7 @@ public class PhotoTest extends BaseTest {
     @AfterAll
     static void cleanup() {
         open("https://ok.ru");
-        new LogPage()
+        new LoginPage()
                 .login(user)
                 .goToPhoto()
                 .goToEditAlbumPage(ALBUM_NAME)

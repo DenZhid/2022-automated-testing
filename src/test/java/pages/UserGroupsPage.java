@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class UserGroupsPage extends Page {
+public class UserGroupsPage extends BasePage {
 
     private final static SelenideElement USER_GROUPS_BLOCK = $(byXpath("//*[@id = 'hook_Block_MyGroupsTopBlock']"));
 

@@ -7,9 +7,8 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.refresh;
 
-public class EditAlbumPage extends Page {
+public class EditAlbumPage extends BasePage {
 
     private static final SelenideElement ADD_MORE_PHOTO_BUTTON = $(byXpath("//div[@class='portlet_controls']"));
     private static final SelenideElement BACK_TO_EDIT_ALBUM = $(byXpath("//a[@data-l='t,back']"));
