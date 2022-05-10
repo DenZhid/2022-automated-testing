@@ -18,7 +18,7 @@ public class CreatingAlbumTest extends BaseTest {
 
     // Тест: логинимся -> заходим в раздел "Фото" -> создаём пустой альбом -> проверяем, что альбом создан
     @Test
-    //@Timeout(value = 10)
+    @Timeout(value = 10)
     @Tag("Photo")
     void createEmptyPhotoAlbumTest() {
         assertTrue(new LoginPage()

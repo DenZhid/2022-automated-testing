@@ -23,7 +23,7 @@ public class ChangingAvatarTest extends BaseTest {
 
     // Тест: логинимся -> загружаем фото -> ставим фото, как аватар -> проверяем, что ссылка на фото аватара изменилась
     @ParameterizedTest
-    //@Timeout(value = 10)
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("ChangingAvatarTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})

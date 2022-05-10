@@ -20,7 +20,7 @@ public class AddingPhotoTest extends BaseTest {
 
     // Тест: логинимся -> загружаем фото -> проверяем, что количество фото пользователя увеличилось
     @ParameterizedTest
-    //@Timeout(value = 10)
+    @Timeout(value = 10)
     @Tag("Photo")
     @DisplayName("UploadPhotoTest")
     @ValueSource(strings = {"cat.png", "kitty.png"})
