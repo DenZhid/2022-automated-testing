@@ -21,7 +21,12 @@ import static java.io.File.separator;
 abstract public class BaseTest {
 
     protected static User user;
-    static final String PATH_TO_RESOURCES_FOLDER = "src" + separator + "test" + separator + "resources" + separator;
+    public static final String PATH_TO_RESOURCES_FOLDER = "src"
+            + separator
+            + "test"
+            + separator
+            + "resources"
+            + separator;
 
     @BeforeAll
     static void createUser() throws IOException {

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.music.MusicPage;
+import pages.photo.PhotoPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;

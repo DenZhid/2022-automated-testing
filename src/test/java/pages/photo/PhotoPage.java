@@ -1,10 +1,13 @@
-package pages;
+package pages.photo;
 
 import java.io.File;
 import java.time.Duration;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import pages.BasePage;
+import pages.MainPage;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
