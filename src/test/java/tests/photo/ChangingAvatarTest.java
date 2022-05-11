@@ -42,7 +42,8 @@ public class ChangingAvatarTest extends BaseTest {
     // Зачискта после тестов
     @AfterEach
     void cleanup() {
-        new PhotoPage()
+        new MainPage()
+                .goToPhoto()
                 .goToEditAlbumPage(PERSONAL_ALBUM_NAME)
                 .deletePhotoByNumber(0);
     }

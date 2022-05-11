@@ -1,14 +1,12 @@
 package pages.photo;
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
-
 import pages.BasePage;
+
+import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class EditAlbumPage extends BasePage {
 
@@ -28,7 +26,6 @@ public class EditAlbumPage extends BasePage {
         EDIT_BUTTON.shouldBe(visible).click();
         DELETE_ALBUM_LINK.shouldBe(visible).click();
         DELETE_ALBUM_BUTTON.shouldBe(visible).click();
-        new PhotoPage();
     }
 
     public void deletePhotoByNumber(int numberOfPhoto) {
@@ -36,14 +33,5 @@ public class EditAlbumPage extends BasePage {
         PhotoListWrapper listOfPhotos = new PhotoListWrapper();
         listOfPhotos.getRemoveButtonByNumber(numberOfPhoto).click();
         BACK_TO_EDIT_ALBUM.shouldBe(visible).click();
-    }
-
-    private static class PhotoListWrapper {
-        private static final ElementsCollection DELETE_PHOTO_BUTTONS_LIST =
-                $$(byXpath("//div[@data-l='t,photo-card']//a[@data-l='t,remove-photo']"));
-
-        private SelenideElement getRemoveButtonByNumber(int index) {
-            return DELETE_PHOTO_BUTTONS_LIST.get(index).shouldBe(visible);
-        }
     }
 }
