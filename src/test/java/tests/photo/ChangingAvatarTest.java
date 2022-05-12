@@ -1,6 +1,5 @@
 package tests.photo;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import pages.LoginPage;
-import pages.MainPage;
-import pages.photo.PhotoPage;
+import pages.main.MainPage;
 import tests.BaseTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;

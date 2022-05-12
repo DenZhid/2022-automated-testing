@@ -1,5 +1,6 @@
 package pages;
 
+import pages.main.MainPage;
 import utils.User;
 
 import com.codeborne.selenide.SelenideElement;

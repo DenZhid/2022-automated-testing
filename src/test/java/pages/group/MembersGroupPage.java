@@ -1,5 +1,6 @@
-package pages;
+package pages.group;
 
+import pages.BasePage;
 import utils.User;
 
 import org.openqa.selenium.InvalidArgumentException;
