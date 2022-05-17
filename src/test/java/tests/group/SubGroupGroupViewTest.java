@@ -1,13 +1,12 @@
 package tests.group;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
-import pages.group.GroupPage;
 import pages.LoginPage;
+import pages.group.GroupPage;
 import tests.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

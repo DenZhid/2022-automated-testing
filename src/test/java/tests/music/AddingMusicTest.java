@@ -1,12 +1,17 @@
 package tests.music;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+
 import pages.LoginPage;
 import pages.music.MusicPage;
 import tests.BaseTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static tests.music.SongConstants.*;
+import static tests.music.SongConstants.FIRST_GROUP_NAME;
+import static tests.music.SongConstants.FIRST_SONG_NAME;
 
 public class AddingMusicTest extends BaseTest {
     // Тест: логинимся -> идем в окно с музыкой -> ищем песню -> добавляем ->

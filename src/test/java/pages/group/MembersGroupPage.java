@@ -1,11 +1,11 @@
 package pages.group;
 
-import pages.BasePage;
-import utils.User;
-
 import org.openqa.selenium.InvalidArgumentException;
 
 import com.codeborne.selenide.SelenideElement;
+
+import pages.BasePage;
+import utils.User;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;

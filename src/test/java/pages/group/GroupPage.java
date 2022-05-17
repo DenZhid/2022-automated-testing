@@ -4,12 +4,12 @@ import com.codeborne.selenide.SelenideElement;
 
 import pages.BasePage;
 import pages.main.MainPage;
+import pages.main.MainTopToolBar;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class GroupPage extends BasePage {
 
@@ -49,7 +49,7 @@ public class GroupPage extends BasePage {
     }
 
     public MainPage goToMain() {
-        MainPage.TopToolBar.getToMainButton().should(visible).click();
+        MainTopToolBar.getToMainButton().should(visible).click();
         return new MainPage();
     }
 

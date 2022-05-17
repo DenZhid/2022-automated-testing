@@ -1,6 +1,7 @@
 package pages.music;
 
 import com.codeborne.selenide.SelenideElement;
+
 import pages.BasePage;
 
 import static com.codeborne.selenide.Condition.visible;
