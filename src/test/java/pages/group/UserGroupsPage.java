@@ -21,10 +21,12 @@ public class UserGroupsPage extends BasePage {
     }
 
     public GroupPage openGroup(String groupId) {
-        // Не работает ни пресс ентер ни клик на лупу что то из этого удалить
-        GROUP_SEARCH_INPUT.should(visible).setValue(groupId).pressEnter();// пресс ентер
-//        GROUP_SEARCH_SUBMIT_BUTTON.should(visible).click();// клик на лупу
-        USER_GROUPS_BLOCK.$(byXpath("a[contains (@hrefattrs,'" + groupId + "')]")).should(visible).click();
+        GROUP_SEARCH_INPUT.should(visible);
+        for (char ch : groupId.toCharArray()) {
+            GROUP_SEARCH_INPUT.append(String.valueOf(ch));
+        }
+        GROUP_SEARCH_INPUT.pressEnter();
+        $(USER_GROUPS_BLOCK.findElement(byXpath("//a[contains (@hrefattrs,'" + groupId + "')]"))).should(visible).click();
         return new GroupPage();
     }
 
