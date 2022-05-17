@@ -1,8 +1,8 @@
 package pages.photo;
 
-import pages.BasePage;
-
 import com.codeborne.selenide.SelenideElement;
+
+import pages.BasePage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;

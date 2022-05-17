@@ -31,7 +31,14 @@ abstract public class BaseTest {
     @BeforeAll
     static void createUser() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(PATH_TO_RESOURCES_FOLDER + "userData.txt"));
-        user =  new User(reader.readLine(), reader.readLine());
+        String login = reader.readLine();
+        String password = reader.readLine();
+        String id = reader.readLine();
+        if (id == null ) {
+            user = new User(login, password);
+        } else {
+            user = new User(login, password, Long.valueOf(id));
+        }
     }
 
     @BeforeEach

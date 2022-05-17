@@ -1,8 +1,9 @@
 package pages;
 
-import utils.User;
-
 import com.codeborne.selenide.SelenideElement;
+
+import pages.main.MainPage;
+import utils.User;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;

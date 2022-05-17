@@ -1,12 +1,15 @@
-package pages;
+package pages.group;
 
 import com.codeborne.selenide.SelenideElement;
+
+import pages.BasePage;
+import pages.main.MainPage;
+import pages.main.MainTopToolBar;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class GroupPage extends BasePage {
 
@@ -19,10 +22,6 @@ public class GroupPage extends BasePage {
 
     public GroupPage() {
         super("Group page init error", GROUP_ABOUT);
-    }
-
-    public GroupPage(String id) {
-        super("Can't load group with id: " + id, "https://ok.ru/group/" + id, GROUP_ABOUT);
     }
 
     public String getName() {
@@ -50,7 +49,7 @@ public class GroupPage extends BasePage {
     }
 
     public MainPage goToMain() {
-        open("https://ok.ru/");
+        MainTopToolBar.getToMainButton().should(visible).click();
         return new MainPage();
     }
 
